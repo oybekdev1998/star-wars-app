@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.link__item> a {
+    color: #ffff00;
+    padding: 7px 10px;
+    border-radius: 3px;
+    text-align: center;
+    border: 2px solid #ffffff;
+    color: #fff;
+    font-weight: 600;
+    text-shadow: #ffff00;
+    margin-right: 10px;
+    margin-left: 0px;
+}
+
+.link__item> a {
+    transition: .4s;
+}
+
+.link__item :global(a.active){
+    border: 2px solid #ae72c2;
+    color: #ae72c2;
+}

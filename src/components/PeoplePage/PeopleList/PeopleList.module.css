@@ -1,5 +1,4 @@
 .list__container {
-    padding: 20px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -9,9 +8,8 @@
 
 .list__item {
     width: 190px;
-
     border: 3px;
-    margin: 20px 0px 20px;
+    margin: 20px 0px 20px 0px;
     background-color: #fff;
     border-radius: 4px;
 }
@@ -25,7 +23,6 @@
 }
 .list__title {
     margin-top: 0;
-
     padding-bottom: 5px;
     color: #000;
     font-size: 14px;

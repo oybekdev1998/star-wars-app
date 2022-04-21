@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import {getAllData} from "../../utils/network";
-import {GET_PEOPLE_DATA} from "../../constants/api";
-import {getPeopleId, getPeopleImg} from '../../services/getId'
+import PropTypes from 'prop-types';
 
-import {withErrorApi} from "../../hoc-helpers/withErrorApi";
+import {withErrorApi} from "@hoc-helpers/withErrorApi";
+import PeopleList from '@components/PeoplePage/PeopleList/PeopleList';
+import {getAllData} from "@utils/network";
+import {GET_PEOPLE_DATA} from "@constants/api";
+import {getPeopleId, getPeopleImg} from '@services/getId'
 
-import PeopleList from '../../components/PeoplePage/PeopleList/PeopleList';
-
+import styles from './PeoplePage.module.css'
 
 const PeoplePage = ({setErrorApi}) => {
   const [people, setPeople] = useState(null)
 
   const getPeople = async (url) => {
     const res = await getAllData(url)
+    
     if(res){
       const peopleList = res.results.map(({name, url}) =>{
         const id = getPeopleId(url);
@@ -25,6 +27,7 @@ const PeoplePage = ({setErrorApi}) => {
       })
       setPeople(peopleList)
       setErrorApi(false)
+
     }else{
       setErrorApi(true)
     }
@@ -39,12 +42,14 @@ const PeoplePage = ({setErrorApi}) => {
 
   return (
     <>
-      { people
-        ? <PeopleList people={people}/>
-        : <h1>Error</h1>
-      }
+      {people && <PeopleList people={people}/>}
     </>
   )
+}
+
+PeoplePage.propTypes = {
+  people: PropTypes.array,
+  setErrorApi: PropTypes.func
 }
 
 export default withErrorApi(PeoplePage);
