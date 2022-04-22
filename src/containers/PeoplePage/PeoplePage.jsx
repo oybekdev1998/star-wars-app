@@ -10,6 +10,7 @@ import {useQueryParams} from "@hooks/useQueryParams";
 import {changeHTTP} from "@utils/network";
 
 import styles from './PeoplePage.module.css'
+import PeopleNavigation from '@components/PeoplePage/PeopleNavigation/PeopleNavigation';
 
 const PeoplePage = ({setErrorApi}) => {
 
@@ -53,10 +54,16 @@ const PeoplePage = ({setErrorApi}) => {
 
   useEffect(() => {
     getPeople(GET_PEOPLE_DATA+queryPage)
-  },[queryPage]);
+  },[]);
 
   return (
     <>
+      <PeopleNavigation
+        getPeople={getPeople}
+        prevPage={prevPage}
+        nextPage={nextPage}
+        counterPage={counterPage}
+      />
       {people && <PeopleList people={people}/>}
     </>
   )
