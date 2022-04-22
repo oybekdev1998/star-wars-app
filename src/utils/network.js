@@ -1,3 +1,10 @@
+import {HTTP, HTTPS} from "@constants/api";
+
+
+export const changeHTTP = (url) => {
+    const result = url ? url.replace(HTTP, HTTPS) : url
+    return result
+}
 
 export const getAllData = async (url) => {
     try {

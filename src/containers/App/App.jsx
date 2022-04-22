@@ -4,6 +4,7 @@ import {Routes, Route} from 'react-router-dom';
 import PeoplePage from '@containers/PeoplePage/PeoplePage';
 import Header from '@components/Header/Header';
 import Home from "../Home/Home";
+import NotFound from "../NotFound/NotFound";
 import styles from './App.module.css'
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/" exact element={<Home />}  />
         <Route path="/people" element={<PeoplePage />} />
-        <Route path="/not-found" element={<NotFound/>}/>
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
     </div>
   );

@@ -6,7 +6,7 @@ const Header = () => {
     <div>
       <ul className={styles.container}>
         <li className={styles.link__item}><Link to={'/'}>Home</Link></li>
-        <li className={styles.link__item}><Link to={'/people'}>People</Link></li>
+        <li className={styles.link__item}><Link to={'/people/?page=1'}>People</Link></li>
         <li className={styles.link__item}><Link to={'/notFound'} >Not Found</Link></li>
       </ul>
     </div>

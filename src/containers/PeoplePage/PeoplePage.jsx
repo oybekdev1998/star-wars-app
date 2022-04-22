@@ -5,16 +5,27 @@ import {withErrorApi} from "@hoc-helpers/withErrorApi";
 import PeopleList from '@components/PeoplePage/PeopleList/PeopleList';
 import {getAllData} from "@utils/network";
 import {GET_PEOPLE_DATA} from "@constants/api";
-import {getPeopleId, getPeopleImg} from '@services/getId'
+import {getPeopleId, getPeopleImg, getPeoplePageId} from '@services/getId'
+import {useQueryParams} from "@hooks/useQueryParams";
+import {changeHTTP} from "@utils/network";
 
 import styles from './PeoplePage.module.css'
 
 const PeoplePage = ({setErrorApi}) => {
+
+  const query = useQueryParams()
+  const queryPage = query.get('page')
+
+
   const [people, setPeople] = useState(null)
+  const [prevPage, setPrevPage] = useState()
+  const [nextPage, setNextPage] = useState()
+  const [counterPage, setCounterPage] = useState()
+
 
   const getPeople = async (url) => {
     const res = await getAllData(url)
-    
+
     if(res){
       const peopleList = res.results.map(({name, url}) =>{
         const id = getPeopleId(url);
@@ -26,6 +37,10 @@ const PeoplePage = ({setErrorApi}) => {
         }
       })
       setPeople(peopleList)
+      setPrevPage(changeHTTP(res.previous))
+      setNextPage(changeHTTP(res.next))
+      setCounterPage(getPeoplePageId(url))
+
       setErrorApi(false)
 
     }else{
@@ -37,8 +52,8 @@ const PeoplePage = ({setErrorApi}) => {
 
 
   useEffect(() => {
-    getPeople(GET_PEOPLE_DATA)
-  },[]);
+    getPeople(GET_PEOPLE_DATA+queryPage)
+  },[queryPage]);
 
   return (
     <>
