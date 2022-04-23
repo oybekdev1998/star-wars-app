@@ -9,7 +9,8 @@ import { getPeopleImg } from '@services/getId';
 
 import styles from './PersonPage.module.css'
 import PersonInfo from '@components/PersonPage/PersonInfo/PersonInfo';
-import PersonPhoto from '../../components/PersonPage/PersonPhoto/PersonPhoto';
+import PersonPhoto from '@components/PersonPage/PersonPhoto/PersonPhoto';
+import PersonLinkBack from '@components/PersonPage/PersonLinkBack/PersonLinkBack';
 
 const PersonPage = ({match, setErrorApi}) => {
 
@@ -50,16 +51,17 @@ const PersonPage = ({match, setErrorApi}) => {
   }, [])
 
   return (
-      <div className={styles.wrapper}>
-        <h1 className={styles.person__name}>{personName}</h1>
+      <>
+        <PersonLinkBack />
+        <div className={styles.wrapper}>
+            <h1 className={styles.person__name}>{personName}</h1>
 
-        <div className={styles.container}>
-        <PersonPhoto personPhoto={personPhoto} personName={personName}/>  
-        {personInfo && <PersonInfo personInfo={personInfo} />}
+            <div className={styles.container}>
+              <PersonPhoto personPhoto={personPhoto} personName={personName}/>  
+              {personInfo && <PersonInfo personInfo={personInfo} />}
+            </div>
         </div>
-        
-        
-      </div>
+      </>
   )
 }
 
