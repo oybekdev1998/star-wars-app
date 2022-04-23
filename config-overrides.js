@@ -9,7 +9,8 @@ module.exports = function override(config){
     '@services': 'src/services',
     '@utils': 'src/utils',
     '@hooks': 'src/hooks',
-    '@UI': 'src/UI'
+    '@UI': 'src/UI',
+    '@PersonPage': 'src/containers/PersonPage'
 
         })(config);
 

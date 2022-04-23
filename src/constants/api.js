@@ -6,6 +6,7 @@ export const SWAPI_ROOT = 'swapi.dev/api/';
 export const SWAPI_PEOPLE = 'people';
 export const SWAPI_PARAM_PAGE = '/?page='
 export const GET_PEOPLE_DATA = HTTPS+SWAPI_ROOT+SWAPI_PEOPLE+SWAPI_PARAM_PAGE;
+export const GET_PERSON_DATA = HTTPS+SWAPI_ROOT+SWAPI_PEOPLE;
 
 //photo
 export const VISUAL_GUIDE = 'starwars-visualguide.com/assets/';

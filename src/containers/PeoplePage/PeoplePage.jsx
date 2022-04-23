@@ -9,7 +9,7 @@ import {getPeopleId, getPeopleImg, getPeoplePageId} from '@services/getId'
 import {useQueryParams} from "@hooks/useQueryParams";
 import {changeHTTP} from "@utils/network";
 
-import styles from './PeoplePage.module.css'
+
 import PeopleNavigation from '@components/PeoplePage/PeopleNavigation/PeopleNavigation';
 
 const PeoplePage = ({setErrorApi}) => {

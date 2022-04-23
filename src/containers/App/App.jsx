@@ -5,6 +5,7 @@ import PeoplePage from '@containers/PeoplePage/PeoplePage';
 import Header from '@components/Header/Header';
 import Home from "../Home/Home";
 import NotFound from "../NotFound/NotFound";
+import PersonPage from '@PersonPage/PersonPage';
 import styles from './App.module.css'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" exact element={<Home />}  />
         <Route path="/people" element={<PeoplePage />} />
         <Route path="*" element={<NotFound/>}/>
+        <Route path="/people/:id" element={<PersonPage/>}/>
       </Routes>
     </div>
   );
