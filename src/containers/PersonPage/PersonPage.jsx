@@ -11,12 +11,14 @@ import styles from './PersonPage.module.css'
 import PersonInfo from '@components/PersonPage/PersonInfo/PersonInfo';
 import PersonPhoto from '@components/PersonPage/PersonPhoto/PersonPhoto';
 import PersonLinkBack from '@components/PersonPage/PersonLinkBack/PersonLinkBack';
+import PersonFilms from '@components/PersonPage/PersonFilms/PersonFilms';
 
 const PersonPage = ({match, setErrorApi}) => {
 
   const [personInfo, setPersonInfo] = useState(null)
   const [personName, setPersonName] = useState(null)
-  const [personPhoto, setPersonPhoto] = useState()
+  const [personPhoto, setPersonPhoto] = useState(null)
+  const [personFilms, setPersonFilms] = useState([])
 
   
   const id = useParams(match).id
@@ -36,7 +38,7 @@ const PersonPage = ({match, setErrorApi}) => {
           {title: 'Birth year', data: res.birth_year },
           {title: 'Gender', data: res.gender },
         ])
-
+        res.films.length && setPersonFilms(res.films);
         setPersonName(res.name)
         setPersonPhoto(getPeopleImg(id))
         setErrorApi(false)
@@ -59,6 +61,7 @@ const PersonPage = ({match, setErrorApi}) => {
             <div className={styles.container}>
               <PersonPhoto personPhoto={personPhoto} personName={personName}/>  
               {personInfo && <PersonInfo personInfo={personInfo} />}
+              {personFilms && <PersonFilms personFilms={personFilms} />}
             </div>
         </div>
       </>

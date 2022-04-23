@@ -26,3 +26,11 @@ export const getAllData = async (url) => {
 //     const body = getAllData(SWAPI_ROOT+SWAPI_PEOPLE);
 //     console.log(body);
 // })();
+
+export const getConcurrantRequest = async (url) => {
+    const res = await Promise.all(url.map(res => {
+        return fetch(res).then(res =>  res.json())
+    }))
+
+    return res
+}
