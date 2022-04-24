@@ -1,32 +1,26 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import iconBack from './img/back.svg';
 
-import imgBack from './img/left-arrow.png'
-import styles from './PersonLinkBack.module.css'
+import styles from './PersonLinkBack.module.css';
+
 const PersonLinkBack = () => {
-  
-  const navigate = useNavigate()
-  
-  const handleBack = (e) => {
-    e.preventDefault()
-    navigate(-1);
+    const navigate = useNavigate();
 
-  }
-  return (
-    <div className={styles.container}>
-     
-      <img
-        className={styles.img}
-        src={imgBack} alt='Go Back' />
-      <a
-        href='2#' 
-        onClick={handleBack}
-        className={styles.link}
-    >
-      Go back
-    </a>
-    </div>
-  )
+    const handleGoBack = e => {
+        e.preventDefault();
+        navigate(-1);
+    }
+
+    return (
+        <a
+            href="2#"
+            onClick={handleGoBack}
+            className={styles.link}
+        >
+            <img className={styles.link__img} src={iconBack} alt="Go back" />
+            <span>Go back</span>
+        </a>
+    )
 }
 
-export default PersonLinkBack
+export default PersonLinkBack;

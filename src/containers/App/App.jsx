@@ -7,6 +7,7 @@ import Home from "../Home/Home";
 import NotFound from "../NotFound/NotFound";
 import PersonPage from '@PersonPage/PersonPage';
 import styles from './App.module.css'
+import FavoritePerson from '../FavoritePerson/FavoritePerson';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/people" element={<PeoplePage />} />
         <Route path="*" element={<NotFound/>}/>
         <Route path="/people/:id" element={<PersonPage/>}/>
+        <Route path="/favorites" element={<FavoritePerson />}/>
       </Routes>
     </div>
   );

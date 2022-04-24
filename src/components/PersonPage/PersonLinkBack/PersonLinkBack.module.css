@@ -1,18 +1,15 @@
-.container {
-  margin-top: 30px;
+.link {
   display: inline-flex;
   align-items: center;
+  margin-top: 15px;
+  font-weight: var(--font-bold);
+  color: var(--color-yellow);
+  text-decoration: none;
 }
-
-.link {
-  color: yellow;
-  font-size: 18px;
-  margin-left: 5px;
-  text-shadow: 0 0 2px #fff, 0 0 40px yellow;
-}
-
-.img {
+.link__img {
   width: 30px;
   height: 30px;
-  
+  margin-right: var(--spacing-small);
+  object-fit: contain;
+  object-position: center center;
 }

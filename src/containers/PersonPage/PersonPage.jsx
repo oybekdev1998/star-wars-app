@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, Suspense} from 'react'
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import {withErrorApi} from "@hoc-helpers/withErrorApi";
 import { GET_PERSON_DATA } from '@constants/api'
@@ -11,17 +12,25 @@ import styles from './PersonPage.module.css'
 import PersonInfo from '@components/PersonPage/PersonInfo/PersonInfo';
 import PersonPhoto from '@components/PersonPage/PersonPhoto/PersonPhoto';
 import PersonLinkBack from '@components/PersonPage/PersonLinkBack/PersonLinkBack';
-import PersonFilms from '@components/PersonPage/PersonFilms/PersonFilms';
+import UiLoader from '@UI/UiLoader/UiLoader'
+
+const PersonFilms = React.lazy(() => import ('@components/PersonPage/PersonFilms/PersonFilms'));
 
 const PersonPage = ({match, setErrorApi}) => {
+
+  const storeData = useSelector(state => state.favoriteReducer)
+  
 
   const [personInfo, setPersonInfo] = useState(null)
   const [personName, setPersonName] = useState(null)
   const [personPhoto, setPersonPhoto] = useState(null)
   const [personFilms, setPersonFilms] = useState([])
+  const [favoritePerson, setFavoritePerson] = useState(false)
 
   
   const id = useParams(match).id
+
+  storeData[id] ? setFavoritePerson(true) : setFavoritePerson(false)
   
   useEffect(() => {
     (async () => {
@@ -34,7 +43,6 @@ const PersonPage = ({match, setErrorApi}) => {
           {title: 'Hair color', data: res.hair_color },
           {title: 'Skin color', data: res.skin_color },
           {title: 'Eye color', data: res.eye_color },
-          {title: 'Height', data: res.height },
           {title: 'Birth year', data: res.birth_year },
           {title: 'Gender', data: res.gender },
         ])
@@ -59,9 +67,16 @@ const PersonPage = ({match, setErrorApi}) => {
             <h1 className={styles.person__name}>{personName}</h1>
 
             <div className={styles.container}>
-              <PersonPhoto personPhoto={personPhoto} personName={personName}/>  
+              <PersonPhoto 
+                favoritePerson={favoritePerson}
+                setFavoritePerson={setFavoritePerson}
+                personId={id} 
+                personPhoto={personPhoto} 
+                personName={personName}/>  
               {personInfo && <PersonInfo personInfo={personInfo} />}
-              {personFilms && <PersonFilms personFilms={personFilms} />}
+              {personFilms && <Suspense fallback={<UiLoader />}>
+                <PersonFilms personFilms={personFilms} />
+                </Suspense>}
             </div>
         </div>
       </>

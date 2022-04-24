@@ -27,7 +27,7 @@ export const getAllData = async (url) => {
 //     console.log(body);
 // })();
 
-export const getConcurrantRequest = async (url) => {
+export const makeConcurrentRequest = async (url) => {
     const res = await Promise.all(url.map(res => {
         return fetch(res).then(res =>  res.json())
     }))
