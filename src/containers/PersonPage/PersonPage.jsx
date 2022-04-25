@@ -36,7 +36,7 @@ const PersonPage = ({match, setErrorApi}) => {
     (async () => {
 
       storeData[id] ? setFavoritePerson(true) : setFavoritePerson(false)
-      
+
       const res = await getAllData(`${GET_PERSON_DATA}/${id}/`)
 
       if(res){
