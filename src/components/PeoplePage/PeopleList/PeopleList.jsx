@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styles from './PeopleList.module.css'
 
 const PeopleList = (people) => {
+  
     return (
         <>
           <ul className={styles.list__container}>

@@ -30,10 +30,13 @@ const PersonPage = ({match, setErrorApi}) => {
   
   const id = useParams(match).id
 
-  storeData[id] ? setFavoritePerson(true) : setFavoritePerson(false)
+  
   
   useEffect(() => {
     (async () => {
+
+      storeData[id] ? setFavoritePerson(true) : setFavoritePerson(false)
+      
       const res = await getAllData(`${GET_PERSON_DATA}/${id}/`)
 
       if(res){

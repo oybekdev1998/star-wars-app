@@ -1,17 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+import PeopleList from '@components/PeoplePage/PeopleList/PeopleList'
+
 
 const FavoritePerson = () => {
-
+  const [people, setPeople] = useState([])
   const storeData = useSelector(state => state.favoriteReducer)
 
-  console.log(storeData);
+  
+  useEffect(() => {
+    const arr = Object.entries(storeData)
+    console.log(arr);
+  }, [])
   return (
     <div>
       <Link to={'/favorites'}>
-          FavoritePerson
+          <PeopleList people={people} />
       </Link>
     </div>
   )
