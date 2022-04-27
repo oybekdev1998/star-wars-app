@@ -11,7 +11,8 @@ module.exports = function override(config){
     '@hooks': 'src/hooks',
     '@UI': 'src/UI',
     '@PersonPage': 'src/containers/PersonPage',
-    '@store': 'src/store'
+    '@store': 'src/store',
+    '@context': 'src/context'
 
   })(config);
 
