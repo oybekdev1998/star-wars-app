@@ -8,7 +8,8 @@ import NotFound from "../NotFound/NotFound";
 import PersonPage from '@PersonPage/PersonPage';
 import styles from './App.module.css'
 import FavoritePerson from '../FavoritePerson/FavoritePerson';
-
+import SearchPerson from '../SearchPage/SearchPage';
+import ErrorMessage from '@components/ErrorMessage/ErrorMessage'
 function App() {
   return (
     <div className={styles.wrapper}>
@@ -19,6 +20,8 @@ function App() {
         <Route path="*" element={<NotFound/>}/>
         <Route path="/people/:id" element={<PersonPage/>}/>
         <Route path="/favorites" element={<FavoritePerson />}/>
+        <Route path="/search" element={<SearchPerson />}/>
+        <Route path="/fail" element={<ErrorMessage />}/>
       </Routes>
     </div>
   );

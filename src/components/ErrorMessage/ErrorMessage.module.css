@@ -12,3 +12,10 @@
     -webkit-text-fill-color: transparent;
 
 }
+.video {
+    display: block;
+    margin: auto;
+    margin-top: var(--spacing-medium);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--box-shadow-white);
+}
