@@ -24,7 +24,7 @@ const FavoritePerson = () => {
   }, [storeData])
   return (
     <div>
-        <h1 className='header__text'>FavoritesPage</h1>
+        <h1 className='header__text'>Favorites Page</h1>
         {people.length
           ? <PeopleList people={people} />
           : <h2 className={styles.comment}>No data</h2>
