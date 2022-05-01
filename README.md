@@ -3,8 +3,9 @@
 ### 🐧 Links
 ***
 * `Repository` [https://github.com/oybekdev1998/star-wars-app](https://github.com/oybekdev1998/star-wars-app)
-* `Project`[]()
-* `oybekdev1998`[]()
+* `Project`[https://star-wars-application.vercel.app/](https://star-wars-application.vercel.app/)
+* `oybekdev1998`[https://github.com/oybekdev1998](https://github.com/oybekdev1998)
+
 ***
 ### 🐶 Available Scripts and Commands
 ```
